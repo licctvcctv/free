@@ -50,6 +50,9 @@ jobs:
     - name: Build APK
       run: |
         echo "Building APK..."
+        echo "Setting up gradle init script..."
+        mkdir -p $HOME/.gradle/init.d/
+        cp .github/ci-init.gradle $HOME/.gradle/init.d/
         flutter build apk --release --verbose 2>&1 | tee build.log
         exit_code=${PIPESTATUS[0]}
         if [ $exit_code -ne 0 ]; then
@@ -65,7 +68,7 @@ jobs:
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
         GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
-        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m" -Dfile.encoding=UTF-8 -I${{ github.workspace }}/.github/ci-init.gradle
+        GRADLE_OPTS: -Xmx4096m -Dfile.encoding=UTF-8
     
     - name: Build App Bundle
       run: |
@@ -76,7 +79,7 @@ jobs:
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
         GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
-        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m" -Dfile.encoding=UTF-8 -I${{ github.workspace }}/.github/ci-init.gradle
+        GRADLE_OPTS: -Xmx4096m -Dfile.encoding=UTF-8
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
