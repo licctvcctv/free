@@ -1,0 +1,293 @@
+PODS:
+  - AMap3DMap (9.7.0):
+    - AMapFoundation (>= 1.8.0)
+  - amap_flutter_location (0.0.1):
+    - AMapLocation
+    - Flutter
+  - amap_flutter_map (0.0.1):
+    - AMap3DMap
+    - Flutter
+  - AMapFoundation (1.8.2)
+  - AMapLocation (2.10.0):
+    - AMapFoundation (>= 1.8.0)
+  - audio_session (0.0.1):
+    - Flutter
+  - beauty_cam (1.0.4):
+    - beauty_cam/cge (= 1.0.4)
+    - Flutter
+  - beauty_cam/cge (1.0.4):
+    - Flutter
+  - camera_avfoundation (0.0.1):
+    - Flutter
+  - device_calendar (0.0.1):
+    - Flutter
+  - device_info_plus (0.0.1):
+    - Flutter
+  - emoji_picker_flutter (0.0.1):
+    - Flutter
+  - ffmpeg-kit-ios-video (6.0)
+  - ffmpeg_kit_flutter_video (6.0.3):
+    - ffmpeg_kit_flutter_video/video (= 6.0.3)
+    - Flutter
+  - ffmpeg_kit_flutter_video/video (6.0.3):
+    - ffmpeg-kit-ios-video (= 6.0)
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_document_picker (0.0.1):
+    - Flutter
+  - flutter_inapp_purchase (0.0.1):
+    - Flutter
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
+  - fluwx (0.0.1):
+    - Flutter
+    - WechatOpenSDK-XCFramework (~> 2.0.2)
+  - FMDB (2.7.9):
+    - FMDB/standard (= 2.7.9)
+  - FMDB/standard (2.7.9)
+  - gallery_saver (0.0.1):
+    - Flutter
+  - image_cropper (0.0.4):
+    - Flutter
+    - TOCropViewController (~> 2.6.1)
+  - image_gallery_saver (2.0.2):
+    - Flutter
+  - image_picker_ios (0.0.1):
+    - Flutter
+  - in_app_purchase_storekit (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - just_audio (0.0.1):
+    - Flutter
+  - libwebp (1.3.2):
+    - libwebp/demux (= 1.3.2)
+    - libwebp/mux (= 1.3.2)
+    - libwebp/sharpyuv (= 1.3.2)
+    - libwebp/webp (= 1.3.2)
+  - libwebp/demux (1.3.2):
+    - libwebp/webp
+  - libwebp/mux (1.3.2):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.3.2)
+  - libwebp/webp (1.3.2):
+    - libwebp/sharpyuv
+  - location (0.0.1):
+    - Flutter
+  - MTBBarcodeScanner (5.0.11)
+  - open_filex (0.0.2):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.1.1):
+    - Flutter
+  - photo_manager (2.0.0):
+    - Flutter
+    - FlutterMacOS
+  - qr_code_scanner (0.2.0):
+    - Flutter
+    - MTBBarcodeScanner
+  - record (0.0.1):
+    - Flutter
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sign_in_with_apple (0.0.1):
+    - Flutter
+  - sqflite (0.0.3):
+    - Flutter
+    - FMDB (>= 2.7.5)
+  - Toast (4.1.0)
+  - tobias (0.0.1):
+    - Flutter
+  - TOCropViewController (2.6.1)
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
+  - video_thumbnail (0.0.1):
+    - Flutter
+    - libwebp
+  - wakelock (0.0.1):
+    - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+  - WechatOpenSDK-XCFramework (2.0.2)
+
+DEPENDENCIES:
+  - amap_flutter_location (from `.symlinks/plugins/amap_flutter_location/ios`)
+  - amap_flutter_map (from `.symlinks/plugins/amap_flutter_map/ios`)
+  - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - beauty_cam (from `.symlinks/plugins/beauty_cam/ios`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - device_calendar (from `.symlinks/plugins/device_calendar/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - emoji_picker_flutter (from `.symlinks/plugins/emoji_picker_flutter/ios`)
+  - ffmpeg_kit_flutter_video (from `.symlinks/plugins/ffmpeg_kit_flutter_video/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_document_picker (from `.symlinks/plugins/flutter_document_picker/ios`)
+  - flutter_inapp_purchase (from `.symlinks/plugins/flutter_inapp_purchase/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - fluwx (from `.symlinks/plugins/fluwx/ios`)
+  - gallery_saver (from `.symlinks/plugins/gallery_saver/ios`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
+  - image_gallery_saver (from `.symlinks/plugins/image_gallery_saver/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - in_app_purchase_storekit (from `.symlinks/plugins/in_app_purchase_storekit/ios`)
+  - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
+  - open_filex (from `.symlinks/plugins/open_filex/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
+  - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
+  - record (from `.symlinks/plugins/record/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/ios`)
+  - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - tobias (from `.symlinks/plugins/tobias/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
+  - video_thumbnail (from `.symlinks/plugins/video_thumbnail/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AMap3DMap
+    - AMapFoundation
+    - AMapLocation
+    - ffmpeg-kit-ios-video
+    - FMDB
+    - libwebp
+    - MTBBarcodeScanner
+    - Toast
+    - TOCropViewController
+    - WechatOpenSDK-XCFramework
+
+EXTERNAL SOURCES:
+  amap_flutter_location:
+    :path: ".symlinks/plugins/amap_flutter_location/ios"
+  amap_flutter_map:
+    :path: ".symlinks/plugins/amap_flutter_map/ios"
+  audio_session:
+    :path: ".symlinks/plugins/audio_session/ios"
+  beauty_cam:
+    :path: ".symlinks/plugins/beauty_cam/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  device_calendar:
+    :path: ".symlinks/plugins/device_calendar/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  emoji_picker_flutter:
+    :path: ".symlinks/plugins/emoji_picker_flutter/ios"
+  ffmpeg_kit_flutter_video:
+    :path: ".symlinks/plugins/ffmpeg_kit_flutter_video/ios"
+  Flutter:
+    :path: Flutter
+  flutter_document_picker:
+    :path: ".symlinks/plugins/flutter_document_picker/ios"
+  flutter_inapp_purchase:
+    :path: ".symlinks/plugins/flutter_inapp_purchase/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
+  fluwx:
+    :path: ".symlinks/plugins/fluwx/ios"
+  gallery_saver:
+    :path: ".symlinks/plugins/gallery_saver/ios"
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
+  image_gallery_saver:
+    :path: ".symlinks/plugins/image_gallery_saver/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
+  in_app_purchase_storekit:
+    :path: ".symlinks/plugins/in_app_purchase_storekit/ios"
+  just_audio:
+    :path: ".symlinks/plugins/just_audio/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
+  open_filex:
+    :path: ".symlinks/plugins/open_filex/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  photo_manager:
+    :path: ".symlinks/plugins/photo_manager/ios"
+  qr_code_scanner:
+    :path: ".symlinks/plugins/qr_code_scanner/ios"
+  record:
+    :path: ".symlinks/plugins/record/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/ios"
+  sign_in_with_apple:
+    :path: ".symlinks/plugins/sign_in_with_apple/ios"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/ios"
+  tobias:
+    :path: ".symlinks/plugins/tobias/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/ios"
+  video_thumbnail:
+    :path: ".symlinks/plugins/video_thumbnail/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+
+SPEC CHECKSUMS:
+  AMap3DMap: dce25dd3e51e6b92109caa7d0c97fc6055830fb3
+  amap_flutter_location: 44ff5beb64f42e0bf5feb402fe299dac0013af6f
+  amap_flutter_map: 979e54d227cedac6c7504a2151bfbf3bcf96760a
+  AMapFoundation: 9885c48fc3a78fdfb84a0299a2293e56ea3c9fec
+  AMapLocation: 5248aec2455ebb5d104b367813c946430a2ee033
+  audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
+  beauty_cam: d14c2268ed90a9261cc050404ccaae797db027c7
+  camera_avfoundation: 3125e8cd1a4387f6f31c6c63abb8a55892a9eeeb
+  device_calendar: 9cb33f88a02e19652ec7b8b122ca778f751b1f7b
+  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  emoji_picker_flutter: fe2e6151c5b548e975d546e6eeb567daf0962a58
+  ffmpeg-kit-ios-video: d3a8a535570063b717f88da68f9089e213aa21ba
+  ffmpeg_kit_flutter_video: a3b221c1909b7972f73b3bf44a967454d98335b7
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_document_picker: 109ba1c4622e6e62bfced17c22ff544a9a3541f4
+  flutter_inapp_purchase: 5c6a1ac3f11b11d0c8c0321c0c41c1f05805e4c8
+  fluttertoast: 9f2f8e81bb5ce18facb9748d7855bf5a756fe3db
+  fluwx: e9e728cfdb80e82dac5f4ff974b1901a7939dcd0
+  FMDB: aa44149f6fb634b1ac54f64f47064bb0d0c5a032
+  gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
+  image_cropper: a3291c624a953049bc6a02e1f8c8ceb162a24b25
+  image_gallery_saver: cb43cc43141711190510e92c460eb1655cd343cb
+  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
+  in_app_purchase_storekit: 4fb7ee9e824b1f09107fbfbbce8c4b276366dc43
+  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
+  MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
+  open_filex: 6e26e659846ec990262224a12ef1c528bb4edbe4
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
+  photo_manager: 4f6810b7dfc4feb03b461ac1a70dacf91fba7604
+  qr_code_scanner: bb67d64904c3b9658ada8c402e8b4d406d5d796e
+  record: cae05d8dd3cdb1dea3511b20e5a5811a1ae00d0d
+  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
+  sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
+  Toast: ec33c32b8688982cecc6348adeae667c1b9938da
+  tobias: 2aded9b83e3663b907360a800d8e3c13284f25c5
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  url_launcher_ios: 68d46cc9766d0c41dbdc884310529557e3cd7a86
+  video_player_avfoundation: 81e49bb3d9fb63dccf9fa0f6d877dc3ddbeac126
+  video_thumbnail: c4e2a3c539e247d4de13cd545344fd2d26ffafd1
+  wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
+  webview_flutter_wkwebview: 2e2d318f21a5e036e2c3f26171342e95908bd60a
+  WechatOpenSDK-XCFramework: acdeeda129efbef9532bca8a10c24e1b4b8c7d69
+
+PODFILE CHECKSUM: 78c11539300ee46784f5cdc378c22408f8797466
+
+COCOAPODS: 1.15.2

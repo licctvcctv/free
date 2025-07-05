@@ -1,0 +1,115 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new FileNotFoundException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    //compileSdkVersion flutter.compileSdkVersion  1月20修改内容
+    compileSdkVersion 34 //1月20修改内容
+
+    // ndkVersion flutter.ndkVersion
+    ndkVersion "25.2.9519653"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.sweetest.freego.freego_flutter"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdkVersion flutter.minSdkVersion
+        //targetSdkVersion flutter.targetSdkVersion  1月20修改内容
+        targetSdkVersion 34  //1月20修改内容
+        versionCode 8
+        versionName '1.0.9'
+        multiDexEnabled true
+        minSdkVersion 24
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../../android/key.jks')
+            storePassword "youcan123"
+            keyAlias "youcan"
+            keyPassword "youcan123"
+        }
+        release {
+          storeFile file('../../android/key.jks')
+          storePassword "youcan123"
+          keyAlias "youcan"
+          keyPassword "youcan123"
+          v1SigningEnabled true
+          v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+            ndk{
+               //abiFilters "arm64-v8a", "mips64", "mips", "armeabi", "armeabi-v7a", "armeabi-v8a"
+               abiFilters "arm64-v8a", "mips64"
+              // abiFilters "mips", "armeabi", "armeabi-v7a", "armeabi-v8a"
+            }
+        }
+        debug{
+            // minifyEnabled true
+            // shrinkResources true
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            ndk{
+              abiFilters "arm64-v8a", "mips", "mips64", "armeabi", "armeabi-v7a", "armeabi-v8a", "x86", "x86_64"
+            }
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.amap.api:3dmap:latest.integration'
+    //implementation 'com.amap.api:map2d:latest.integration'
+    //implementation 'com.amap.api:search:latest.integration'
+}

@@ -1,0 +1,1 @@
+typedef OnLoginCallback = void Function(bool isSuccess);

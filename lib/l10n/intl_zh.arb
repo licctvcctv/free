@@ -1,0 +1,23 @@
+{
+  "name": "用户名",
+  "image_picker_camera_title": "相机",
+  "image_picker_album_title": "相册",
+  "image_picker_select_button_title": "确定",
+  "image_picker_select_images_title": "已选择:",
+  "image_picker_select_images_guide": "拖动图片重新排序:",
+  "image_picker_exposure_title": "滤镜",
+  "image_picker_exposure_locked_title": "锁定",
+  "image_picker_exposure_auto_title": "自动",
+  "image_picker_confirm": "确定",
+  "image_picker_confirm_delete": "是否要删除这张照片",
+  "no": "否",
+  "yes": "是",
+  "image_picker_exit_without_selecting": "是否要退出而不选择图像？",
+  "image_picker_preview_title": "预览",
+  "image_picker_image_edit_title": "编辑",
+  "image_picker_image_edit_contrast": "对比度",
+  "image_picker_image_edit_brightness": "亮度",
+  "image_picker_image_edit_saturation": "饱和度",
+  "image_picker_image_filter_title": "滤镜",
+  "image_picker_confirm_reset_changes": "是否重置更改？"
+}

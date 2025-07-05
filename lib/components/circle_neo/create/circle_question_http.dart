@@ -1,0 +1,38 @@
+
+import 'package:dio/dio.dart';
+import 'package:freego_flutter/http/http_tool.dart';
+
+class CircleQuestionHttp{
+
+  CircleQuestionHttp._internal();
+  static final CircleQuestionHttp _instance = CircleQuestionHttp._internal();
+  factory CircleQuestionHttp(){
+    return _instance;
+  }
+
+  Future<bool> create({
+    required String title,
+    required String content,
+    required List<String> picList,
+    double? userLatitude,
+    double? userLongitude,
+    String? userCity,
+    String? userAddress,
+    Function(Response)? fail,
+    Function(Response)? success
+  }) async{
+    const String url = '/circle/question';
+    bool? result = await HttpTool.post(url, {
+      'title': title,
+      'content': content,
+      'picList': picList,
+      'userCity': userCity,
+      'userAddress': userAddress,
+      'userLatitude': userLatitude,
+      'userLongitude': userLongitude
+    }, (response){
+      return true;
+    }, fail: fail, success: success);
+    return result ?? false;
+  }
+}

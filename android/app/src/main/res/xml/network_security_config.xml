@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">www.sample-videos.com</domain>
+        <domain includeSubdomains="true">26.26.26.1</domain>
+        <domain includeSubdomains="true">192.168.1.93</domain>
+        <domain includeSubdomains="true">192.168.1.114</domain>
+        <domain includeSubdomains="true">192.168.1.157</domain>
+        <domain includeSubdomains="true">test.bombox.org</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">freemen.work</domain>
+        <domain includeSubdomains="true">io.dev.freego.city</domain>
+        <domain includeSubdomains="true">io.freego.city</domain>
+    </domain-config>
+</network-security-config>
