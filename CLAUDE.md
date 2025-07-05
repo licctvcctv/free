@@ -56,6 +56,33 @@ The project uses code generation for:
 
 Run `flutter packages pub run build_runner build` after modifying model classes or adding new translations.
 
+## CI/CD Pipeline
+
+The project includes automated build and release workflows using GitHub Actions:
+
+### Automated Builds
+- **Triggers**: Push to main/develop branches, pull requests to main
+- **Platforms**: Android (APK + AAB), iOS (IPA), Web
+- **Workflow**: `.github/workflows/build.yml`
+- **Outputs**: Build artifacts uploaded to GitHub Actions
+
+### Release Pipeline
+- **Trigger**: Creating a new GitHub release
+- **Workflow**: `.github/workflows/release.yml`
+- **Outputs**: APK, AAB, and IPA files automatically attached to releases
+
+### Build Requirements
+- **Android**: Java 17, Flutter 3.19.0
+- **iOS**: macOS runner, CocoaPods
+- **Code Generation**: Runs automatically before builds
+- **Testing**: All tests must pass before building
+
+### Creating a Release
+1. Create a new tag: `git tag v1.0.0`
+2. Push tag: `git push origin v1.0.0`
+3. Create release on GitHub with the tag
+4. Apps will be built and attached automatically
+
 ## Architecture
 
 ### State Management

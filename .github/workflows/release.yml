@@ -1,0 +1,104 @@
+name: Release Build
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  release-android:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+    
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        channel: 'stable'
+        cache: true
+    
+    - name: Install dependencies
+      run: flutter pub get
+    
+    - name: Generate code
+      run: flutter packages pub run build_runner build --delete-conflicting-outputs
+    
+    - name: Build APK
+      run: flutter build apk --release
+    
+    - name: Build App Bundle
+      run: flutter build appbundle --release
+    
+    - name: Upload APK to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/app/outputs/flutter-apk/app-release.apk
+        asset_name: freego-flutter-android-${{ github.event.release.tag_name }}.apk
+        asset_content_type: application/vnd.android.package-archive
+    
+    - name: Upload AAB to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/app/outputs/bundle/release/app-release.aab
+        asset_name: freego-flutter-android-${{ github.event.release.tag_name }}.aab
+        asset_content_type: application/octet-stream
+
+  release-ios:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        channel: 'stable'
+        cache: true
+    
+    - name: Install dependencies
+      run: flutter pub get
+    
+    - name: Generate code
+      run: flutter packages pub run build_runner build --delete-conflicting-outputs
+    
+    - name: Install CocoaPods
+      run: sudo gem install cocoapods
+    
+    - name: Install iOS dependencies
+      run: |
+        cd ios
+        pod install
+    
+    - name: Build iOS (no signing)
+      run: flutter build ios --release --no-codesign
+    
+    - name: Create IPA
+      run: |
+        cd build/ios/iphoneos
+        mkdir -p Payload
+        cp -r Runner.app Payload/
+        zip -r freego-flutter-ios-${{ github.event.release.tag_name }}.ipa Payload/
+    
+    - name: Upload IPA to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/ios/iphoneos/freego-flutter-ios-${{ github.event.release.tag_name }}.ipa
+        asset_name: freego-flutter-ios-${{ github.event.release.tag_name }}.ipa
+        asset_content_type: application/octet-stream
