@@ -24,17 +24,18 @@ jobs:
         channel: 'stable'
         cache: true
     
-    - name: Fix Maven repositories for CI
+    - name: Add missing repositories for CI
       run: |
-        echo "Temporarily replacing Maven repositories for CI environment..."
+        echo "Adding missing repositories for CI environment..."
         # Backup original files
         cp android/build.gradle android/build.gradle.bak
-        # Comment out Aliyun mirrors and add official repositories
-        sed -i 's|maven { url '\''https://maven.aliyun.com/repository/google'\'' }|google()\n        mavenCentral()\n        maven { url "https://jitpack.io" }\n        // maven { url "https://maven.aliyun.com/repository/google" }|g' android/build.gradle
-        sed -i 's|maven { url '\''https://maven.aliyun.com/repository/jcenter'\'' }|// maven { url "https://maven.aliyun.com/repository/jcenter" }|g' android/build.gradle
-        sed -i 's|maven { url '\''https://maven.aliyun.com/repository/public'\'' }|// maven { url "https://maven.aliyun.com/repository/public" }|g' android/build.gradle
+        # Add jcenter and jitpack after each 'public' repository
+        sed -i "s|maven { url 'https://maven.aliyun.com/repository/public' }|maven { url 'https://maven.aliyun.com/repository/public' }\
+        maven { url 'https://jcenter.bintray.com' }\
+        maven { url 'https://jitpack.io' }|g" android/build.gradle
         echo "Repository configuration updated for CI"
-        cat android/build.gradle | grep -A 5 -B 5 "repositories"
+        echo "Modified android/build.gradle:"
+        cat android/build.gradle | grep -A 10 -B 2 "repositories"
     
     - name: Install dependencies
       run: flutter pub get

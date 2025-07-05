@@ -28,17 +28,18 @@ jobs:
         channel: 'stable'
         cache: true
     
-    - name: Fix Maven repositories for CI
+    - name: Add missing repositories for CI
       run: |
-        echo "Temporarily replacing Maven repositories for CI environment..."
+        echo "Adding missing repositories for CI environment..."
         # Backup original files
         cp android/build.gradle android/build.gradle.bak
-        # Comment out Aliyun mirrors and add official repositories
-        sed -i 's|maven { url '\''https://maven.aliyun.com/repository/google'\'' }|google()\n        mavenCentral()\n        maven { url "https://jitpack.io" }\n        // maven { url "https://maven.aliyun.com/repository/google" }|g' android/build.gradle
-        sed -i 's|maven { url '\''https://maven.aliyun.com/repository/jcenter'\'' }|// maven { url "https://maven.aliyun.com/repository/jcenter" }|g' android/build.gradle
-        sed -i 's|maven { url '\''https://maven.aliyun.com/repository/public'\'' }|// maven { url "https://maven.aliyun.com/repository/public" }|g' android/build.gradle
+        # Add jcenter and jitpack after each 'public' repository
+        sed -i "s|maven { url 'https://maven.aliyun.com/repository/public' }|maven { url 'https://maven.aliyun.com/repository/public' }\
+        maven { url 'https://jcenter.bintray.com' }\
+        maven { url 'https://jitpack.io' }|g" android/build.gradle
         echo "Repository configuration updated for CI"
-        cat android/build.gradle | grep -A 5 -B 5 "repositories"
+        echo "Modified android/build.gradle:"
+        cat android/build.gradle | grep -A 10 -B 2 "repositories"
     
     - name: Install dependencies
       run: flutter pub get
@@ -62,7 +63,16 @@ jobs:
     - name: Build APK
       run: |
         echo "Building APK..."
-        flutter build apk --release --verbose
+        flutter build apk --release --verbose 2>&1 | tee build.log
+        exit_code=${PIPESTATUS[0]}
+        if [ $exit_code -ne 0 ]; then
+          echo "Build failed with exit code: $exit_code"
+          echo "Last 100 lines of build log:"
+          tail -100 build.log
+          echo "Searching for error messages:"
+          grep -i "error\|exception\|failed" build.log | tail -20
+          exit $exit_code
+        fi
         echo "APK build completed. Checking outputs:"
         find build/app/outputs -name "*.apk" -type f | head -5
       env:
