@@ -24,19 +24,6 @@ jobs:
         channel: 'stable'
         cache: true
     
-    - name: Add missing repositories for CI
-      run: |
-        echo "Adding missing repositories for CI environment..."
-        # Backup original files
-        cp android/build.gradle android/build.gradle.bak
-        # Add jcenter and jitpack after each 'public' repository
-        sed -i "s|maven { url 'https://maven.aliyun.com/repository/public' }|maven { url 'https://maven.aliyun.com/repository/public' }\
-        maven { url 'https://jcenter.bintray.com' }\
-        maven { url 'https://jitpack.io' }|g" android/build.gradle
-        echo "Repository configuration updated for CI"
-        echo "Modified android/build.gradle:"
-        cat android/build.gradle | grep -A 10 -B 2 "repositories"
-    
     - name: Install dependencies
       run: flutter pub get
     
@@ -47,11 +34,15 @@ jobs:
       run: flutter build apk --release
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
+        GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m" -Dfile.encoding=UTF-8 -I${{ github.workspace }}/.github/ci-init.gradle
     
     - name: Build App Bundle
       run: flutter build appbundle --release
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
+        GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m" -Dfile.encoding=UTF-8 -I${{ github.workspace }}/.github/ci-init.gradle
     
     - name: Upload APK to Release
       uses: actions/upload-release-asset@v1
@@ -102,8 +93,6 @@ jobs:
     
     - name: Build iOS (no signing)
       run: flutter build ios --release --no-codesign
-      env:
-        FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
     
     - name: Create IPA
       run: |

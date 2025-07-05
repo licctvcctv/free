@@ -28,19 +28,6 @@ jobs:
         channel: 'stable'
         cache: true
     
-    - name: Add missing repositories for CI
-      run: |
-        echo "Adding missing repositories for CI environment..."
-        # Backup original files
-        cp android/build.gradle android/build.gradle.bak
-        # Add jcenter and jitpack after each 'public' repository
-        sed -i "s|maven { url 'https://maven.aliyun.com/repository/public' }|maven { url 'https://maven.aliyun.com/repository/public' }\
-        maven { url 'https://jcenter.bintray.com' }\
-        maven { url 'https://jitpack.io' }|g" android/build.gradle
-        echo "Repository configuration updated for CI"
-        echo "Modified android/build.gradle:"
-        cat android/build.gradle | grep -A 10 -B 2 "repositories"
-    
     - name: Install dependencies
       run: flutter pub get
     
@@ -77,6 +64,8 @@ jobs:
         find build/app/outputs -name "*.apk" -type f | head -5
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
+        GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m" -Dfile.encoding=UTF-8 -I${{ github.workspace }}/.github/ci-init.gradle
     
     - name: Build App Bundle
       run: |
@@ -86,6 +75,8 @@ jobs:
         find build/app/outputs -name "*.aab" -type f | head -5
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
+        GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m" -Dfile.encoding=UTF-8 -I${{ github.workspace }}/.github/ci-init.gradle
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
@@ -132,8 +123,6 @@ jobs:
         flutter build ios --release --no-codesign --verbose
         echo "iOS build completed. Checking outputs:"
         ls -la build/ios/iphoneos/ || echo "Build directory not found"
-      env:
-        FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
     
     - name: Create IPA
       run: |
