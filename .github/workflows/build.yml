@@ -24,7 +24,7 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.32.2'
+        flutter-version: '3.16.9'
         channel: 'stable'
         cache: true
     
@@ -53,6 +53,8 @@ jobs:
         flutter build apk --release --verbose
         echo "APK build completed. Checking outputs:"
         find build/app/outputs -name "*.apk" -type f | head -5
+      env:
+        FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
     
     - name: Build App Bundle
       run: |
@@ -60,6 +62,8 @@ jobs:
         flutter build appbundle --release --verbose
         echo "AAB build completed. Checking outputs:"
         find build/app/outputs -name "*.aab" -type f | head -5
+      env:
+        FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
@@ -82,7 +86,7 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.32.2'
+        flutter-version: '3.16.9'
         channel: 'stable'
         cache: true
     
@@ -106,6 +110,8 @@ jobs:
         flutter build ios --release --no-codesign --verbose
         echo "iOS build completed. Checking outputs:"
         ls -la build/ios/iphoneos/ || echo "Build directory not found"
+      env:
+        FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
     
     - name: Create IPA
       run: |
@@ -129,7 +135,7 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.32.2'
+        flutter-version: '3.16.9'
         channel: 'stable'
         cache: true
     
