@@ -1,31 +1,9 @@
 allprojects {
     repositories {
-        // Keep existing repositories
-        def hasAliyun = false
-        def hasJcenter = false
-        def hasJitpack = false
-        
-        repositories.each { repo ->
-            if (repo.url.toString().contains('aliyun')) {
-                hasAliyun = true
-            }
-            if (repo.url.toString().contains('jcenter')) {
-                hasJcenter = true
-            }
-            if (repo.url.toString().contains('jitpack')) {
-                hasJitpack = true
-            }
-        }
-        
-        // Add missing repositories for CI
-        if (!hasJcenter) {
-            maven { url 'https://jcenter.bintray.com' }
-        }
-        if (!hasJitpack) {
-            maven { url 'https://jitpack.io' }
-        }
-        
-        // Add Maven Central as fallback
+        // Add critical repositories first for CI
+        maven { url 'https://jcenter.bintray.com' }
+        maven { url 'https://jitpack.io' }
         mavenCentral()
+        google()
     }
 }
