@@ -32,9 +32,12 @@ jobs:
     
     - name: Build APK
       run: |
-        echo "Setting up gradle init script..."
-        mkdir -p $HOME/.gradle/init.d/
-        cp .github/ci-init.gradle $HOME/.gradle/init.d/
+        echo "Temporarily modifying build.gradle for CI..."
+        # Backup original file
+        cp android/build.gradle android/build.gradle.bak
+        # Add mavenCentral() at the start of allprojects repositories
+        sed -i '/repositories {/a\        mavenCentral()' android/build.gradle
+        echo "Modified build.gradle for CI"
         flutter build apk --release
       env:
         FLUTTER_GRADLE_PLUGIN_APPLY_MODE: legacy
